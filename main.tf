@@ -12,6 +12,7 @@ resource "aws_subnet" "main" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.0.1.0/24"
   availability_zone = "ap-south-1a"
+  map_public_ip_on_launch = true  # Enable public IP assignment on instance launch
 }
 
 # Create Internet Gateway
@@ -56,10 +57,11 @@ resource "aws_security_group" "allow_http" {
 
 # Create EC2 Instance
 resource "aws_instance" "web" {
-  ami           = "ami-08718895af4dfa033"  # Replace with your desired AMI
-  instance_type = "t2.micro"
-  subnet_id     = aws_subnet.main.id
-  key_name      = "line1"      # Replace with your existing key pair name
+  ami                    = "ami-08718895af4dfa033"  # Replace with your desired AMI
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.main.id
+  key_name               = "line1"      # Replace with your existing key pair name
+  associate_public_ip_address = true  # Automatically assign a public IP address
 
   tags = {
     Name = "WebServer"
