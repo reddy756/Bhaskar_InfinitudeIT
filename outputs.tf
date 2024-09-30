@@ -1,11 +1,4 @@
-output "vpc_id" {
-  value = aws_vpc.main.id
-}
-
-output "ec2_instance_id" {
-  value = aws_instance.web.id
-}
-
-output "api_gateway_url" {
-  value = "${aws_api_gateway_rest_api.api.execution_arn}/courses"
+# Add this output block at the end of your Terraform configuration
+output "instance_public_ip" {
+  value = aws_instance.web.public_ip
 }
