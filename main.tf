@@ -59,7 +59,7 @@ resource "aws_instance" "web" {
   ami           = "ami-08718895af4dfa033"  # Replace with your desired AMI
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.main.id
-  key_name      = "hello"      # Replace with your existing key pair name
+  key_name      = "line1"      # Replace with your existing key pair name
 
   tags = {
     Name = "WebServer"
